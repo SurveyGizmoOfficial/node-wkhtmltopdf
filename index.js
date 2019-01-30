@@ -101,7 +101,7 @@ function wkhtmltopdf(input, options, callback) {
 	} else {
 
 		if (options.base64) {
-			var child = spawn(wkhtmltopdf.shell, ['-c', args.join(' ') + ' | base64 | cat ; exit ${PIPESTATUS[0]}']);
+			var child = spawn(wkhtmltopdf.shell, ['-c', args.join(' ') + ' | base64 ; exit ${PIPESTATUS[0]}']);
 		} else {
 			// this nasty business prevents piping problems on linux
 			// The return code should be that of wkhtmltopdf and not of cat
